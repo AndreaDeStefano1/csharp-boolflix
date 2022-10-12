@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Crea";
+    Layout = "_EditorLayout";
+}
+@model Genre
+
+<div class="container">
+    <form method="post" action="@Url.Action("Create", "Genre")">
+        @Html.AntiForgeryToken()
+
+        <div class="mb-3">
+            <strong>Genere:</strong>
+            <input asp-for="Name" class="d-block w-100" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+
+        <div class="text-end">
+            <input type="submit" class="btn btn-small btn-info" value="Salva">
+        </div>
+    </form>
+</div>

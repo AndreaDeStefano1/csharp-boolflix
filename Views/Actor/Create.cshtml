@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Crea";
+    Layout = "_EditorLayout";
+}
+@model Actor
+
+<div class="container">
+    <form method="post" action="@Url.Action("Create", "Actor")">
+        @Html.AntiForgeryToken()
+
+        <div class="mb-3">
+            <strong>Nome:</strong>
+            <input asp-for="Name" class="d-block w-100" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>        
+        <div class="mb-3">
+            <strong>Cognome:</strong>
+            <input asp-for="Surname" class="d-block w-100" />
+            <span asp-validation-for="Surname" class="text-danger"></span>
+        </div>
+
+
+        <div class="text-end">
+            <input type="submit" class="btn btn-small btn-info" value="Salva">
+        </div>
+    </form>
+</div>

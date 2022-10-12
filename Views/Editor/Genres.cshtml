@@ -1,0 +1,52 @@
+﻿@{
+    Layout = "_EditorLayout";
+}
+@model List<Genre>
+<div class="d-flex align-items-center justify-content-between">
+    <h1 class="text-center "> Generi </h1>
+    <div>
+        <a class=" btn btn-primary " asp-action="Create" asp-controller="Genre">Aggiungi nuovo</a>
+    </div>
+</div>
+
+
+@if (Model.Count == 0)
+{
+    <div class=" alert alert-primary">
+        <p> Non sono presenti caratteristiche </p>
+    </div>
+}
+else
+{
+    <div class="container">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Azioni</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Genre genre in Model)
+                {
+                    <tr>
+                        <td>@genre.Id</td>
+                        <td>@genre.Name</td>
+                        <td>
+                            <a class="btn btn-warning" href="@Url.Action("Update", "Genre", new { Id = genre.Id } )">Modifica</a>
+                            <form asp-action="Delete" asp-controller="Genre" asp-route-id="@genre.Id" method="post" class="d-inline">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class=" btn btn-danger">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+}

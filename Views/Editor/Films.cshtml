@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "_EditorLayout";
+    @model SupportModel
+
+}
+<div class="d-flex align-items-center justify-content-between">
+    <h1 class="text-center "> Films </h1>
+    <div>
+        <a class=" btn btn-primary " asp-action="Create" asp-controller="Film">Aggiungi nuovo</a>
+    </div>
+</div>
+@if (Model.FilmList.Count == 0)
+{
+    <div class=" alert alert-primary">
+        <p> Non sono presenti caratteristiche </p>
+    </div>
+}
+else
+{
+    <div class="container">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Titolo</th>
+                    <th>Durata</th>
+                    <th>Azioni</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Film film in Model.FilmList)
+                {
+                    <tr>
+                        <td>@film.Id</td>
+                        <td>@film.Title</td>
+                        <td>@film.RunningTime</td>
+
+                        <td>
+                            <a class="btn btn-warning" href="@Url.Action("Update", "Film", new { Id = film.Id } )">Modifica</a>
+                            <form asp-action="Delete" asp-controller="Film" asp-route-id="@film.Id" method="post" class="d-inline">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class=" btn btn-danger">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+}
