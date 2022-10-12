@@ -4,7 +4,9 @@
     {
         public Film? Film { get; set; }
         public List<Film>? FilmList { get; set; }
-        public TVSeries? Serie { get; set; }
+        public TVSeries? TvSerie { get; set; }
+        public int? tvSerieId { get; set; }
+        public Episode? Episode { get; set; }
         public List<TVSeries>? SerieList { get; set; }
         public List<Actor>? Actors { get; set; }
         public List<int> SelectedActorsIds { get; set; } = new List<int>();

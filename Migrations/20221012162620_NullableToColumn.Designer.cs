@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using csharp_boolflix.DBContext;
 
@@ -11,9 +12,10 @@ using csharp_boolflix.DBContext;
 namespace csharp_boolflix.Migrations
 {
     [DbContext(typeof(BoolflixDbContext))]
-    partial class BoolflixDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221012162620_NullableToColumn")]
+    partial class NullableToColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

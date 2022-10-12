@@ -24,7 +24,11 @@ namespace csharp_boolflix.Controllers
         }
         public IActionResult Series()
         {
-            return View();
+
+            SupportModel supportModel = new SupportModel();
+            supportModel.Actors = _db.Actors.ToList();
+            supportModel.SerieList = _db.TvSeries.ToList();
+            return View(supportModel);
         }
         public IActionResult Genres()
         {
